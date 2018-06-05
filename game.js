@@ -3,6 +3,10 @@ const cardColors = ["red", "red", "green", "green", "blue", "blue", "brown", "br
 let cards = document.querySelectorAll("div");
 cards = [...cards];
 
+const clickCard = function(){
+    console.log('click')
+};
+
 const init = function(){
     cards.forEach((card) => {
         const position = Math.floor(Math.random() * cardColors.length);
@@ -10,6 +14,13 @@ const init = function(){
         cardColors.splice(position, 1)
     })
 
+    setTimeout(function(){
+        cards.forEach(function(card){
+            card.classList.add("hidden")
+            card.addEventListener("click", clickCard)
+        })
+
+    }, 2000)
 }
 
 init()
