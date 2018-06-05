@@ -3,19 +3,27 @@ const cardColors = ["red", "red", "green", "green", "blue", "blue", "brown", "br
 let cards = document.querySelectorAll("div");
 cards = [...cards];
 
+const startTime = new Date().getTime();
+
+let activeCard = "";
+const activeCards = [];
+
+const gamePairs = cards.length/2
+let gameResult = 0;
+
 const clickCard = function(){
     console.log('click')
 };
 
 const init = function(){
-    cards.forEach((card) => {
+    cards.forEach(card => {
         const position = Math.floor(Math.random() * cardColors.length);
         card.classList.add(cardColors[position])
         cardColors.splice(position, 1)
     })
 
     setTimeout(function(){
-        cards.forEach(function(card){
+        cards.forEach(card => {
             card.classList.add("hidden")
             card.addEventListener("click", clickCard)
         })
