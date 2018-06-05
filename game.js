@@ -12,7 +12,24 @@ const gamePairs = cards.length/2
 let gameResult = 0;
 
 const clickCard = function(){
-    console.log('click')
+    activeCard = this;
+    activeCard.classList.remove('hidden');
+
+    if(activeCards.length === 0){
+        activeCards[0] = activeCard;
+        return;
+    } else{
+        cards.forEach(card => {
+            card.removeEventListener("click", clickCard)
+        })
+        activeCards[1] = activeCard;
+        if(activeCards[0].className === activeCards[1].className){
+            console.log('win')
+            activeCards.forEach(card => card.classList.add("off"))
+        } else {
+            activeCards.forEach(card => card.classList.add("hidden"))
+        }
+    }
 };
 
 const init = function(){
