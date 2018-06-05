@@ -13,6 +13,11 @@ let gameResult = 0;
 
 const clickCard = function(){
     activeCard = this;
+
+    if(activeCard == activeCards[0]){
+        return;
+    }
+    
     activeCard.classList.remove('hidden');
 
     if(activeCards.length === 0){
